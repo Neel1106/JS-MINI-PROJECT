@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- -------------- Bootstrap CSS -------------- -->
+    <link rel="stylesheet" href="Assets/bootstrap/css/bootstrap.min.css">
+
+    <!-- -------------- DataTable CSS -------------- -->
+    <link rel="stylesheet" href="Assets/DataTable/datatables.min.css">
+
+    <!-- -------------- Custome CSS -------------- -->
+    <link rel="stylesheet" href="Assets/css/style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="mt-3">
+                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalId">
+                    Add
+                </button>
+            </div>
+            <div>
+                <!-- Modal trigger button -->
+                
+
+
+                <!-- Modal Body -->
+                <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                <div class="modal fade" id="modalId" tabindex="-1"  data-bs-keyboard="false"
+                    role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable  modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitleId">
+                                    Add Category and Item
+                                </h5>
+                               
+                            </div>
+                            <div class="modal-body">
+                                <form action="" class="needs-validation" id="form" novalidate>
+                                    <div class="row">
+                                        <div class="mb-3 col">
+                                            <label for="" class="form-label"> Category Name</label>
+                                            <input type="text" class="form-control" pattern="[A-Za-z]{2,}"
+                                                name="categoryname" id="categoryname" aria-describedby="helpId"
+                                                placeholder="" required />
+                                            <div class="invalid-feedback">Pease Enter Valida Name</div>
+                                        </div>
+                                        <div class="mb-3 col">
+                                            <label for="" class="form-label">category Description</label>
+                                            <input type="text" class="form-control" name="catdescription"
+                                                id="catdescription" aria-describedby="helpId" placeholder="" />
+                                            <div class="invalid-feedback">This fiels is Required</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class=" mb-3form-check col">
+                                            <input class="form-check-input" type="checkbox" value="yes" id="active"
+                                                checked required/>
+                                            <label class="form-check-label" for=""> Active</label>
+                                        </div>
+                                        <div class="mb-3 col">
+                                            <label for="" class="form-label">Launch Date</label>
+                                            <input type="date" class="form-control" name="launchdate" id="launchdate"
+                                                aria-describedby="helpId" oninput="checkdate()" placeholder="" required />
+                                            <div class="invalid-feedback">This fiels is Required</div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-primary">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Item Name</th>
+                                                    <th scope="col">Item Description</th>
+                                                    <th scope="col">Food type</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Discount</th>
+                                                    <th scope="col">GST</th>
+                                                    <th scope="col">Active</th>
+                                                    <th scope="col"><button type="button" class="btn btn-dark" onclick='addinputrow()'>+</button></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="item" id="item">
+                                                <tr class="">
+                                                    <td scope="row"><input type="text" class="form-control"
+                                                            name="itemname" id="itemname" aria-describedby="helpId"
+                                                            placeholder="" required />
+                                                        <div class="invalid-feedback">Pease Enter Valida Name</div>
+                                                    </td>
+                                                    <td scope="row"><input type="text" class="form-control"
+                                                            name="itemdescription" id="itemdescription"
+                                                            aria-describedby="helpId" placeholder="" /></td>
+                                                    <td scope="row">
+                                                        <div class="mb-3">
+                                                            <select class="form-select" name="foodtype" id="foodtype">
+                                                                <option>Dairy food</option>
+                                                                <option>Sea food</option>
+                                                                <option>Vegan</option>
+                                                                <option selected>Veg</option>
+                                                                <option>Nonveg</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td scope="row"><input type="number" min="0" step="0.01"
+                                                            class="form-control" name="price" id="price"
+                                                            aria-describedby="helpId" placeholder="" required />
+                                                        <div class="invalid-feedback">This field is required</div>
+                                                    </td>
+                                                    <td scope="row"><input type="number" min="0" max="15" step="0.01"
+                                                            class="form-control" name="discount" id="discount"
+                                                            aria-describedby="helpId" placeholder="" required />
+                                                        <div class="invalid-feedback">This field is required</div>
+                                                    </td>
+                                                    <td scope="row"><input type="number" min="0" step="0.01"
+                                                            class="form-control" name="gst" id="gst"
+                                                            aria-describedby="helpId" placeholder="" required />
+                                                        <div class="invalid-feedback">This field is required</div>
+                                                    </td>
+                                                    <td scope="row"><input class="form-check-input" type="checkbox"
+                                                            value="yes" id="active" checked required /></td>
+                                                    <td scope="row"><button type="button" class="btn btn-dark"
+                                                            disabled>-</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-primary" id="deatils">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Category Name</th>
+                                <th scope="col">category Description</th>
+                                <th scope="col">Active</th>
+                                <th scope="col">New category</th>
+                                <th scope="col">Action       </th>
+                            </tr>
+                        </thead>
+                        <tbody class="nesteddetails">
+                           
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- -------------- Bootstrap JS -------------- -->
+    <script src="Assets/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!-- -------------- DataTable js -------------- -->
+    <script src="Assets/DataTable/datatables.min.js"></script>
+
+    <!-- -------------- Custome js -------------- -->
+    <script src="Assets/JS/index.js"></script>
+</body>
+
+</html>
